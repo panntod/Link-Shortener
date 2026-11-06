@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import type { Filter } from "mongodb";
-import { getLinks, type LinkDoc } from "../lib/mongodb";
-import { isAuthorized } from "./auth";
-import { ALIAS_REGEX } from "./utils";
+import { isAuthorized } from "../lib/auth";
+import { getLinks, LinkDoc } from "../lib/mongodb";
+import { ALIAS_REGEX } from "../lib/utils";
 
 const PAGE_SIZE = 20;
 
@@ -18,7 +18,9 @@ function firstQuery(value: string | string[] | undefined): string {
 // DELETE /api/links?code=abc123     -> hapus link
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!process.env.ADMIN_TOKEN) {
-    return res.status(503).json({ error: "ADMIN_TOKEN belum diset di server." });
+    return res
+      .status(503)
+      .json({ error: "ADMIN_TOKEN belum diset di server." });
   }
   if (!isAuthorized(req)) {
     return res.status(401).json({ error: "Tidak diizinkan." });

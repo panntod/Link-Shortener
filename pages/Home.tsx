@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { createLink, ShortenResponse } from "../lib/api";
+import { createLink, ShortenResponse } from "../lib/fetch";
 
 const UI_STYLES = `
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');

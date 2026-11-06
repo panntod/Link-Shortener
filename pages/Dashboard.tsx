@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import type { FormEvent } from "react";
-import { ApiError, deleteLink, fetchLinks, LinksResponse } from "../lib/api";
+import { ApiError, deleteLink, fetchLinks, LinksResponse } from "../lib/fetch";
 
 const TOKEN_KEY = "admin_token";
 
@@ -294,7 +294,7 @@ export default function Dashboard() {
               onChange={(e) => setSearchInput(e.target.value)}
             />
             <button className="nova-button primary" type="submit">
-              Cari ↗
+              Cari
             </button>
           </form>
         </div>
